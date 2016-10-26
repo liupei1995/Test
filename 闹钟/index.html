@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#myCanvas {
+				display: block;
+				margin: 50px auto;
+				border: 1px solid red;
+			}
+			
+			#myCanvas1 {
+				display: block;
+				margin: 0px auto;
+				margin-top: -650px;
+			}
+			
+			#myCanvas2 {
+				display: block;
+				margin: 0px auto;
+				margin-top: -600px;
+			}
+			
+			#myCanvas3 {
+				display: block;
+				margin: 0px auto;
+				margin-top: -500px;
+			}
+			
+			#myCanvas4 {
+				display: block;
+				margin: 0px auto;
+				margin-top: -400px;
+			}
+			
+			#myCanvas5 {
+				display: block;
+				margin: 0px auto;
+				margin-top: -400px;
+				/*border: 1px solid red;*/
+			}
+			
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="800" height="600"></canvas>
+		<canvas id="myCanvas1" width="800" height="600"></canvas>
+		<canvas id="myCanvas2" width="800" height="600"></canvas>
+		<canvas id="myCanvas3" width="400" height="400"></canvas>
+		<canvas id="myCanvas4" width="400" height="400"></canvas>
+		<canvas id="myCanvas5" width="400" height="400"></canvas>
+		<div id="">
+
+		</div>
+		<script type="text/javascript">
+			var canvas = document.querySelector("#myCanvas");
+			var canvas1 = document.querySelector("#myCanvas1");
+			var canvas2 = document.querySelector("#myCanvas2");
+			var canvas3 = document.querySelector("#myCanvas3");
+			var canvas4 = document.querySelector("#myCanvas4");
+			var canvas5 = document.querySelector("#myCanvas5");
+			var context = canvas.getContext("2d");
+			var context1 = canvas1.getContext("2d");
+			var context2 = canvas2.getContext("2d");
+			var context3 = canvas3.getContext("2d");
+			var context4 = canvas4.getContext("2d");
+			var context5 = canvas5.getContext("2d");
+			context.arc(400, 300, 200, 0, 360, false);
+
+			context.moveTo(400, 100);
+			context.lineTo(400, 150);
+
+			context.moveTo(600, 300);
+			context.lineTo(550, 300);
+
+			context.moveTo(400, 500);
+			context.lineTo(400, 450);
+
+			context.moveTo(200, 300);
+			context.lineTo(250, 300);
+			context.stroke();
+
+			context1.arc(400, 300, 200, 0, 360, false);
+
+			context1.moveTo(400, 100);
+			context1.lineTo(400, 150);
+
+			context1.moveTo(600, 300);
+			context1.lineTo(550, 300);
+
+			context1.moveTo(400, 500);
+			context1.lineTo(400, 450);
+
+			context1.moveTo(200, 300);
+			context1.lineTo(250, 300);
+			context1.stroke();
+			canvas1.style.transform = "rotate(30deg)";
+
+			context2.arc(400, 300, 200, 0, 360, false);
+
+			context2.moveTo(400, 100);
+			context2.lineTo(400, 150);
+
+			context2.moveTo(600, 300);
+			context2.lineTo(550, 300);
+
+			context2.moveTo(400, 500);
+			context2.lineTo(400, 450);
+
+			context2.moveTo(200, 300);
+			context2.lineTo(250, 300);
+			context2.stroke();
+			canvas2.style.transform = "rotate(60deg)";
+			//当前时间
+			var nowDate = new Date();
+			var s = nowDate.getSeconds();
+			var m = nowDate.getMinutes();
+			var h = nowDate.getHours();
+			var i = s * 6;
+			var j = m * 6;
+			var k = 30 * h;
+			var go = function() {
+				canvas3.style.transform = "rotate(" + i + "deg)";
+				i += 6;
+				if(i % 366 == 0) {
+					j += 6;
+					if (j%366==0) {
+						k+=30;
+					}
+				}
+				canvas5.style.transform = "rotate(" + k + "deg)";
+				canvas4.style.transform = "rotate(" + j + "deg)";
+				setTimeout(go, 1000);
+			}
+			go();
+
+			//秒针
+			context3.fillStyle = "black";
+			context3.arc(200, 200, 10, 0, 360, false);
+			context3.moveTo(200, 200);
+			context3.lineTo(200, 70);
+			context3.stroke();
+			context3.fill();
+
+			//分针
+			context4.strokeStyle = "royalblue";
+			context4.moveTo(200, 200);
+			context4.lineTo(200, 100);
+			context4.stroke();
+			//			var j=m*6;
+			//			var mingo=function  () {
+			//				canvas4.style.transform="rotate("+j+"deg)";
+			//				j+=6;
+			//				setTimeout(mingo,60000);
+			//			}
+			//			mingo();
+
+			//时针
+			context5.strokeStyle = "#FF0000";
+			context5.moveTo(200, 200);
+			context5.lineTo(200, 150);
+			context5.stroke();
+//			var k = 30 * h;
+//			var hougo = function() {
+//				canvas5.style.transform = "rotate(" + k + "deg)";
+//				k += 30;
+//				//				speed=30/3600000;
+//				//				speed=Math.floor(speed);
+//				setTimeout(hougo, 3600000);
+//			}
+//			hougo();
+		</script>
+		<script src="js/showtime.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

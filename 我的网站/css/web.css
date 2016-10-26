@@ -1,0 +1,117 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#first-box{
+	width: 1200px;
+	height: 800px;
+	margin: 0px auto;
+	background-color: greenyellow;
+	overflow: hidden;
+	position: relative;
+	background-image: url(../img/背景.jpg);
+	background-repeat: no-repeat;
+}
+.words{
+	position: absolute;
+	top: 250px;
+	left: 400px;
+	font-size: 50px;
+	color: #FF0000;
+	font-weight: 600;
+}
+.letters{
+	position: absolute;
+	left: 460px;
+	top: 310px;
+	font-size: 30px;
+	color:deepskyblue;
+	font-weight: 600;
+}
+
+#first-box>button{
+	margin: 0px 560px;
+	position: absolute;
+	z-index: 10;
+}
+#box{
+	width: 1200px;
+	height: 600px;
+	background-color: red;
+	margin: 0px auto;
+	border: 1px solid green;
+}
+#head{
+	width: 1200px;
+	height: 100px;
+	background-color: aqua;
+	margin: 0px auto;
+}
+#content1{
+	width: 1200px;
+	height: 500px;
+	background-color: cornflowerblue;
+	position: relative;
+}
+#head>div{
+	border-radius: 50%;
+	background-color: white;
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin-left: 120px;
+}
+button{
+	width: 80px;
+	height: 80px;
+	margin: 10px;
+	border-radius: 50%;
+	outline: none;
+	border: 1px solid white;
+}
+button:hover{
+	box-shadow: 0 0 8px gray;	
+}
+#content1>div{
+	width: 600px;
+	height: 400px;
+	left: 300px;
+	top: 50px;
+	position: absolute;
+	opacity: 0;
+}
+.items-left{
+	background-color: yellow;
+	/*animation-name: myshow;*/
+	animation-direction: alternate;
+	animation-duration: 2s;
+}
+.items-left1{
+	background-color: green;
+	animation-direction: alternate;
+	animation-duration: 2s;
+}
+.items-center{
+	background-color: orange;
+	animation-direction: alternate;
+	animation-duration: 2s;
+}
+.items-right{
+	background-color: blue;
+	animation-direction: alternate;
+	animation-duration: 2s;
+}
+.items-right1{
+	background-color: red;
+	animation-direction: alternate;
+	animation-duration: 2s;
+}
+@keyframes myshow{
+	from{
+		transform: scale(0,0);
+	}
+	to{
+		transform: scale(1,1);
+	}
+}
+

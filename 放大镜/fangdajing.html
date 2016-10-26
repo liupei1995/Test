@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0
+			}
+			
+			#box{
+				display: block;
+				width: 400px;
+				height: 255px;
+				margin: 50px;
+				position: relative;
+				border: 1px solid #ccc;
+			}
+			
+			#small-box {
+				position: relative;
+				z-index: 1;
+			}
+			
+			#float-box {
+				display: none;
+				width: 160px;
+				height: 120px;
+				position: absolute;
+				background: #ffffcc;
+				border: 1px solid #ccc;
+				opacity: 0.5;
+			}
+			
+			#mark {
+				position: absolute;
+				display: block;
+				width: 400px;
+				height: 255px;
+				background-color: #fff;
+				/*filter: alpha(opacity=0);*/
+				opacity: 0;
+				z-index: 10;
+			}
+			
+			#big-box {
+				display: none;
+				position:absolute;
+				top: 0;
+				left: 460px;
+				width: 400px;
+				height: 300px;
+				overflow: hidden;
+				border: 1px solid #ccc;
+				z-index: 1;
+			}
+			
+			#big-box img {
+				position: absolute;
+				z-index: 5;
+			}
+    </style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="small-box">
+				<div id="mark">
+					
+				</div>
+				<div id="float-box">
+				</div>
+				<img src="img/macbook-small.jpg" />
+			</div>
+			<div id="big-box">
+				<img src="img/macbook-big.jpg" />
+			</div>
+		</div>
+		<script type="text/javascript">
+		var box=document.querySelector("#box");
+		var small=document.querySelector("#small-box");
+		var big=document.querySelector("#big-box");
+		var myfloat=document.querySelector("#float-box");
+		var mark=document.querySelector("#mark");
+		var bigimg=document.querySelectorAll("img")[1];
+		mark.onmouseover=function  () {
+			big.style.display="block";
+			myfloat.style.display="block";
+		}
+		mark.onmouseout=function  () {
+			big.style.display="none";
+			myfloat.style.display="none";
+		}
+	    mark.onmousemove=function  (e) {
+			
+			var left=e.pageX-box.offsetLeft-small.offsetLeft-myfloat.offsetWidth/2;
+			var top=e.pageY-box.offsetTop-small.offsetTop-myfloat.offsetHeight/2;
+			if (left<0) {
+				left=0;
+			}
+			if (left>mark.offsetWidth-myfloat.offsetWidth) {
+				left=mark.offsetWidth-myfloat.offsetWidth;
+			}
+			if (top<0) {
+				top=0;
+			}
+			if (top>mark.offsetHeight-myfloat.offsetHeight) {
+				top=mark.offsetHeight-myfloat.offsetHeight;
+			}
+			
+			myfloat.style.left=left+"px";
+			myfloat.style.top=top+"px";
+			
+			var big_left=left/(mark.offsetWidth-myfloat.offsetWidth);
+			var big_top=top/(mark.offsetHeight-myfloat.offsetHeight);
+			
+			bigimg.style.left=-big_left*(bigimg.offsetWidth-big.offsetWidth)+"px";
+			bigimg.style.top=-big_top*(bigimg.offsetHeight-big.offsetHeight)+"px";
+		}
+		</script>
+	</body>
+
+</html>

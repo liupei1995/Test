@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 80%;
+				margin: 0 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrappoer">
+			<video src="mov_bbb.mp4" id="video" controls="controls" width="500px" height="500px">
+				
+			</video>
+			
+		</div>
+		<div id="content">
+			<input type="button" name="playButton" id="playButton" value="播放" onclick="play()"/>
+			<input type="button" name="pauseButton" id="pauseButton" value="暂停" onclick="pause()"/>
+			<input type="button" name="mute" id="mute" value="静音" onclick="mute()"/>
+			<input type="button" id="big" value="全屏"/>
+			<span>播放进度</span>
+		    <progress value="0" id="progress"></progress>
+		    <span>音量</span>
+		    <input type="range" id="ran" value="50" min="0" max="100" onchange="setVolumn()"/>
+		</div>
+	</body>
+	<script type="text/javascript">
+	    var video = document.getElementById("video");
+	    var playButton = document.getElementById("playButton");
+	    var pauseButton = document.getElementById("pauseButton");
+	    var progress = document.getElementById("progress");
+	    var ran = document.getElementById("ran");
+	    var big = document.getElementById("big");
+	    big.onclick=function(){
+			video.webkitRequestFullScreen() //兼容谷歌和safrai
+			// video.mozRequestFullScreen()  //兼容火狐
+		}
+	    var vol;
+		function play(){
+			video.play();
+			playButton.disabled = true;
+			pauseButton.disabled = false;
+			setInterval("pro()",100);
+		}
+		function pro(){
+			progress.max = video.duration;
+			progress.value = video.currentTime;
+		}
+		function pause(){
+			video.pause();
+			playButton.disabled = false;
+			pauseButton.disabled = true;
+		}
+		//设置静音
+		function mute(){
+			if (video.muted == false) {
+				vol = ran.value;
+				ran.value = 0;
+				video.muted = true;
+			} else{
+				video.muted = false;
+				ran.value = vol;
+			}
+		}
+		//设置音量
+		video.volume = ran.value/100;
+		function setVolumn(){
+			video.volume = ran.value/100;
+		}
+	</script>
+</html>

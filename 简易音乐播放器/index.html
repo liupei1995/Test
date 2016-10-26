@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<video width="800" height="" controls="controls" id="video">
+			<source src="简易音乐播放器/mov_bbb.mp4" type="video/mp4"></source>
+			<source src="myvideo.ogv" type="video/ogg"></source>
+			<source src="myvideo.webm" type="video/webm"></source>
+			<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+				<param name="movie" value="myvideo.swf" />
+				<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+			</object>
+			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+		</video>
+		<input type="range" name="myrang" id="myrang" value="20" min="0" max="100" onchange=""/>
+		<script type="text/javascript">
+		var video=document.querySelector("#video");
+			var ran=document.querySelector("#myrang");
+			video.volume=ran.value/100;
+			function setVolumn () {
+				
+			}
+			
+		</script>
+	</body>
+</html>
